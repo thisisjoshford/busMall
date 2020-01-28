@@ -19,8 +19,8 @@ let randomBM3 = bmProducts.getRandomProduct();
 while (randomBM1.id === randomBM3.id || randomBM2.id === randomBM3.id) {
     randomBM3 = bmProducts.getRandomProduct();
 }
-
-const randomBM1object = (bmProducts.getById(randomBM2.id));
+//creates variables with object containers 
+const randomBM1object = (bmProducts.getById(randomBM1.id));
 const randomBM2object = (bmProducts.getById(randomBM2.id));
 const randomBM3object = (bmProducts.getById(randomBM3.id));
 
@@ -37,8 +37,9 @@ const bmProductImage3 = document.getElementById('randomImg3');
 bmProductImage3.src = randomBM3object.image;
 bmProductImage3.width = 300;
 
-
 console.log(randomBM1object.image);
+console.log(randomBM2object.image);
+console.log(randomBM3object.image);
 console.log(randomBM1.id);
 console.log(randomBM2.id);
 console.log(randomBM3.id);
