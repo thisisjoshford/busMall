@@ -15,24 +15,28 @@
         <h3>Which product are you most likely to buy?</h3>
     </header>
     <div id="randomBMproductContainers">
-        <div id="randomProduct1">
-            <input type="radio" name="bmProduct" checked>
-            <img id="randomImg1" src="">
-            <h2 id="bmProductName1"></h2>
-        </div>
-        <div id="randomProduct2">
+        <label id="randomProduct1">
+           <input type="radio" name="bmProduct" checked>
+           <img class ="radio-image" id="randomImg1" src="">
+           <h2 id="bmProductName1"></h2>
+        </label>
+           
+        <label id="randomProduct2">
             <input type="radio" name="bmProduct">
-            <img id="randomImg2" src="">
+            <img class ="radio-image" id="randomImg2" src="">
             <h2 id="bmProductName2"></h2>
-        </div>
-        <div id="randomProduct3">
-            <input type="radio" name="bmProduct">
-            <img id="randomImg3" src="">
-            <h2 id="bmProductName3"></h2>
-        </div>
+        </label>
+        </label>
+        <label id="randomProduct3">
+                <input type="radio" name="bmProduct">
+                <img class ="radio-image" id="randomImg3" src="">
+                <h2 id="bmProductName3"></h2>
+        </label>
     </div>
-    <br>
-    <button>NEXT SELECTION</button>
+    </div>
+    <div>
+        <button>NEXT SELECTION</button>
+   </div>
 
     <script type="module" src="app.js"></script>
 </body>
