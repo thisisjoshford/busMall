@@ -87,7 +87,7 @@ const busMallProducts = [
     { 
         id: 18,
         name: 'usb',
-        image: '../assets/usb.jpg'
+        image: '../assets/usb.gif'
     },
     { 
         id: 19,
