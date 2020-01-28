@@ -15,7 +15,6 @@ export default class BusMallProductArray {
         });
         return productMatch;
     }
-
     // remove a product from the array
     removeProductsById(busMallProductId) {
         this.busMallProducts.forEach((busMallProducts, i) => {
@@ -24,14 +23,12 @@ export default class BusMallProductArray {
             }
         });
     }
-
     // is there a product left to compare? 
     hasAnyProducts() {return this.busMallProducts.length;}
 
     // generates a random product 
     getRandomProduct() {
         const randomProduct = Math.floor(Math.random() * this.busMallProducts.length);
-
         return this.busMallProducts[randomProduct];
     }
 }

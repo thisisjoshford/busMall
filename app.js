@@ -5,15 +5,19 @@ import BusMallProductArray from './data/productArray.js';
 
 //creates a variable that has all of the BusMall Products
 const bmProducts = new BusMallProductArray(busMallProducts);
-console.log(bmProducts);
 
+//creating a random product
+const randomBM1 = bmProducts.getRandomProduct();
+//creates a second random product that will check if it matches with first...if so re-create a random product
+let randomBM2 = bmProducts.getRandomProduct();
+while (randomBM1.id === randomBM2.id) {
+    randomBM2 = bmProducts.getRandomProduct();}
+//same as above routine, but checks against random1 OR (||) random2
+let randomBM3 = bmProducts.getRandomProduct();
+while (randomBM1.id === randomBM3.id || randomBM2.id === randomBM3.id) {
+    randomBM3 = bmProducts.getRandomProduct();
+}
 
-const randomBusMallProduct1 = bmProducts.getRandomProduct();
-console.log('random1', randomBusMallProduct1);
-
-
-const randomBusMallProduct2 = bmProducts.getRandomProduct();
-console.log('random2', randomBusMallProduct2);
-
-const randomBusMallProduct3 = bmProducts.getRandomProduct();
-console.log('random3', randomBusMallProduct3);
+console.log(randomBM1.id);
+console.log(randomBM2.id);
+console.log(randomBM3.id);
