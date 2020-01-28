@@ -42,7 +42,7 @@ const busMallProducts = [
     { 
         id: 9,
         name: 'dog duck',
-        image: '..assets/dog-duck.jpg'
+        image: '../assets/dog-duck.jpg'
     },
     { 
         id: 10,
@@ -72,7 +72,7 @@ const busMallProducts = [
     { 
         id: 15,
         name: 'sweep',
-        image: '../assets/sweep.jpg'
+        image: '../assets/sweep.png'
     },
     { 
         id: 16,
