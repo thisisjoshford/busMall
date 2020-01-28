@@ -6,9 +6,15 @@ import BusMallProductArray from './data/productArray.js';
 //grabs all of the radio tag input elements from DOM
 const bmProductSelection = document.querySelectorAll('input');
 
+//adds event listener to each radio image button
+bmProductSelection.forEach((inputTag) => {
+    inputTag.addEventListener('click', () => {
+        generateRandomBM();
+    });
+});
+
 //creates a variable that has all of the BusMall Products
 const bmProducts = new BusMallProductArray(busMallProducts);
-
 
 var { randomBM1object, randomBM2object, randomBM3object, randomBM1, randomBM2, randomBM3 } = generateRandomBM();
 //this function generates three random unique ID's... matches them to corresponding data array value... then populates the results to the ODM 
@@ -43,9 +49,3 @@ function generateRandomBM() {
     bmProductImage3.src = randomBM3object.image;
     return { randomBM1object, randomBM2object, randomBM3object, randomBM1, randomBM2, randomBM3 };
 }
-console.log(randomBM1object.image);
-console.log(randomBM2object.image);
-console.log(randomBM3object.image);
-console.log(randomBM1.id);
-console.log(randomBM2.id);
-console.log(randomBM3.id);
