@@ -1,4 +1,4 @@
-export const busMallProducts = [
+const busMallProducts = [
     { 
         id: 1,
         name: 'bag',
@@ -101,3 +101,4 @@ export const busMallProducts = [
     },
 
 ];
+export default busMallProducts;
