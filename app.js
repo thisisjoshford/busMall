@@ -24,18 +24,24 @@ const randomBM1object = (bmProducts.getById(randomBM1.id));
 const randomBM2object = (bmProducts.getById(randomBM2.id));
 const randomBM3object = (bmProducts.getById(randomBM3.id));
 
+
+const bmProductName1 = document.getElementById('bmProductName1');
+bmProductName1.textContent = randomBM1object.name;
 const bmProductImage1 = document.getElementById('randomImg1');
 bmProductImage1.src = randomBM1object.image;
-bmProductImage1.width = 300;
+bmProductImage1.width = 250;
 
+const bmProductName2 = document.getElementById('bmProductName2');
+bmProductName2.textContent = randomBM2object.name;
 const bmProductImage2 = document.getElementById('randomImg2');
 bmProductImage2.src = randomBM2object.image;
-bmProductImage2.width = 300;
+bmProductImage2.width = 250;
 
-
+const bmProductName3 = document.getElementById('bmProductName3');
+bmProductName3.textContent = randomBM3object.name;
 const bmProductImage3 = document.getElementById('randomImg3');
 bmProductImage3.src = randomBM3object.image;
-bmProductImage3.width = 300;
+bmProductImage3.width = 250;
 
 console.log(randomBM1object.image);
 console.log(randomBM2object.image);
