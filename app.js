@@ -34,7 +34,7 @@ bmProductSelection.forEach((inputTag) => {
         console.log('input ID', inputTag.value);
         console.log('number of clicks', numberOfClicks);
         
-        if (numberOfClicks >= 10) {
+        if (numberOfClicks >= 25) {
             window.location = 'results.html';
         }
     
