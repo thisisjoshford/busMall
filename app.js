@@ -2,29 +2,48 @@
 import busMallProducts from './data/data.js';
 //links constructor routine from productArray
 import BusMallProductArray from './data/productArray.js';
+//imports findByID function
+import findByID from './utils.js';
 
 //grabs all of the radio tag input elements from DOM
 const bmProductSelection = document.querySelectorAll('input');
 
 let numberOfClicks = 0;
-//adds event listener to each radio image button
+let sessionData = [];
+
+// //creates a variable that has all of the BusMall Products
+const bmProducts = new BusMallProductArray(busMallProducts);
+
+//adds event listener to each radio image button and log number of clicks and user selection
 bmProductSelection.forEach((inputTag) => {
     inputTag.addEventListener('click', () => {
+        //counts number of clicks
         numberOfClicks++;
+        //gets the product vote ID
+        let productVote = findByID((parseInt(inputTag.value)), sessionData);
+        console.log('product VOTE', productVote);
+        if (!productVote) {
+            productVote = {
+                id: (parseInt(inputTag.value)),
+                quantity: 1
+            };
+            sessionData.push(productVote);
+        } else { productVote.quantity++;}
         generateRandomBM();
-        console.log(inputTag.value);
-        console.log(numberOfClicks);
+        console.log(sessionData);
+        console.log('input ID', inputTag.value);
+        console.log('number of clicks', numberOfClicks);
+
     });
+    
 });
 
-//creates a variable that has all of the BusMall Products
-const bmProducts = new BusMallProductArray(busMallProducts);
 
 var { randomBM1object, randomBM2object, randomBM3object, randomBM1, randomBM2, randomBM3 } = generateRandomBM();
 //this function generates three random unique ID's... matches them to corresponding data array value... then populates the results to the ODM 
 function generateRandomBM() {
     const randomBM1 = bmProducts.getRandomProduct();
-    //creates a second random product that will check if it matches with first...if so re-create a random product
+    //creates a second random product that will check if it matches with first...if kso re-create a random product
     let randomBM2 = bmProducts.getRandomProduct();
     while (randomBM1.id === randomBM2.id) {
         randomBM2 = bmProducts.getRandomProduct();
@@ -38,6 +57,7 @@ function generateRandomBM() {
     const randomBM1object = (bmProducts.getById(randomBM1.id));
     const randomBM2object = (bmProducts.getById(randomBM2.id));
     const randomBM3object = (bmProducts.getById(randomBM3.id));
+
     //populates the DOM with selected name, image, and value id (for data)
     const bmProductName1 = document.getElementById('bmProductName1');
     bmProductName1.textContent = randomBM1object.name;

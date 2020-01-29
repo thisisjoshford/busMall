@@ -15,14 +15,6 @@ export default class BusMallProductArray {
         });
         return productMatch;
     }
-    // remove a product from the array
-    removeProductsById(busMallProductId) {
-        this.busMallProducts.forEach((busMallProducts, i) => {
-            if (busMallProductId === busMallProducts.id) {
-                this.busMallProducts.splice(i, 1);
-            }
-        });
-    }
     // is there a product left to compare? 
     hasAnyProducts() {return this.busMallProducts.length;}
 
