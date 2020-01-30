@@ -13,7 +13,8 @@ let sessionData = [];
 
 // //creates a variable that has all of the BusMall Products
 const bmProducts = new BusMallProductArray(busMallProducts);
-
+//calls generateRandomBM function to populate the page on load
+generateRandomBM();
 //adds event listener to each radio image button and log number of clicks and user selection
 bmProductSelection.forEach((inputTag) => {
     inputTag.addEventListener('click', () => {
@@ -43,8 +44,6 @@ bmProductSelection.forEach((inputTag) => {
     
 });
 
-
-var { randomBM1object, randomBM2object, randomBM3object, randomBM1, randomBM2, randomBM3 } = generateRandomBM();
 //this function generates three random unique ID's... matches them to corresponding data array value... then populates the results to the ODM 
 function generateRandomBM() {
     const randomBM1 = bmProducts.getRandomProduct();
