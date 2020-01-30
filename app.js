@@ -4,13 +4,9 @@ import busMallProducts from './data/data.js';
 import BusMallProductArray from './data/productArray.js';
 //imports findByID function
 import findByID from './utils.js';
-
 //grabs all of the radio tag input elements from DOM
 const bmProductSelection = document.querySelectorAll('input');
-
 let numberOfClicks = 0;
-let sessionData = [];
-
 // //creates a variable that has all of the BusMall Products
 const bmProducts = new BusMallProductArray(busMallProducts);
 //calls generateRandomBM function to populate the page on load
@@ -20,30 +16,42 @@ bmProductSelection.forEach((inputTag) => {
     inputTag.addEventListener('click', () => {
         //counts number of clicks
         numberOfClicks++;
-        //gets the product vote ID
+        //creates local json variable that is grabbed from "session data" in local storage
+        let json = localStorage.getItem('sessionData');
+        //creates local sessionData container/variable
+        let sessionData;
+        //is there any json data? if so... lets convert from string to object via the parse command
+        if (json) { sessionData = JSON.parse(json); }
+        //if there is no json data aka session data on local storage... lets create an empty container
+        else { sessionData = [];}
+        //gets the product vote ID from the radio button input tag and compares it against the current session data array to see if this current selected item is already there... NOTE  *if I left the ID as a string in my meta data the parseInt function wouldn't be necessary*
         let productVote = findByID((parseInt(inputTag.value)), sessionData);
         console.log('product VOTE', productVote);
+        //if the product that has been voted is not there (!) create an object with the name value pair of...
         if (!productVote) {
             productVote = {
                 id: (parseInt(inputTag.value)),
                 quantity: 1
             };
+            //now push that data to the local product vote array
             sessionData.push(productVote);
+            //otherwise increment the quantity key 1 of the existing key/value pair
         } else { productVote.quantity++;}
+        //phew!!! we did all that work... now time to stringify it into the local json container / variable so we can push it to local storage
+        json = JSON.stringify(sessionData);
+        //update local storage with that work son!
+        localStorage.setItem('sessionData', json);
+        //now lets generate a new set of three random photos for the next user vote!
         generateRandomBM();
         console.log(sessionData);
         console.log('input ID', inputTag.value);
         console.log('number of clicks', numberOfClicks);
-        
+        // did the user click through 25 times?? if so... lets send 'em to the results page
         if (numberOfClicks >= 25) {
             window.location = 'results.html';
         }
-    
-
     });
-    
 });
-
 //this function generates three random unique ID's... matches them to corresponding data array value... then populates the results to the ODM 
 function generateRandomBM() {
     const randomBM1 = bmProducts.getRandomProduct();
