@@ -16,7 +16,21 @@ bmProductSelection.forEach((inputTag) => {
     inputTag.addEventListener('click', () => {
         //counts number of clicks
         numberOfClicks++;
-        //creates local json variable that is grabbed from "session data" in local storage
+        let json2 = localStorage.getItem('allTimeData');
+        let allTimeData;
+        if (json2) { allTimeData = JSON.parse(json2);}
+        else { allTimeData = [];}
+        let productVote2 = findByID((parseInt(inputTag.value)), allTimeData);
+        if (!productVote2) {
+            productVote2 = {
+                id: (parseInt(inputTag.value)),
+                quantity: 1
+            };
+            allTimeData.push(productVote2);
+        } else { productVote2.quantity++;}
+        json2 = JSON.stringify(allTimeData);
+        localStorage.setItem('allTimeData', json2);
+         //creates local json variable that is grabbed from "session data" in local storage
         let json = localStorage.getItem('sessionData');
         //creates local sessionData container/variable
         let sessionData;
@@ -24,8 +38,8 @@ bmProductSelection.forEach((inputTag) => {
         if (json) { sessionData = JSON.parse(json); }
         //if there is no json data aka session data on local storage... lets create an empty container
         else { sessionData = [];}
-        //gets the product vote ID from the radio button input tag and compares it against the current session data array to see if this current selected item is already there... NOTE  *if I left the ID as a string in my meta data the parseInt function wouldn't be necessary*
         let productVote = findByID((parseInt(inputTag.value)), sessionData);
+        //gets the product vote ID from the radio button input tag and compares it against the current session data array to see if this current selected item is already there... NOTE  *if I left the ID as a string in my meta data the parseInt function wouldn't be necessary*
         console.log('product VOTE', productVote);
         //if the product that has been voted is not there (!) create an object with the name value pair of...
         if (!productVote) {
