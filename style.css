@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    background-color: oldlace;
+}
+
+h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 55px;
+    margin-bottom: 1px;
+}
+
+h2 {
+    font-family: 'Bangers', cursive;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.randomProduct{
+    float: left;
+    padding-left: 50px;
+
+    /* border: solid 2px black; */
+}
+
+img {
+    width: 250px;
+    height: 250px;
+}
+#randomBMproductContainers {
+    display: flex;
+    justify-content: space-evenly;
+}
+/*This removes the default radio button*/
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+.radio-image {
+    border: 1px solid transparent;
+    width: 250px;
+    cursor: pointer;
+  }
+  
+input:checked + .radio-image {
+     border: 10px solid rgb(0, 72, 131);
+    cursor: pointer;
+      
+  }
